@@ -26,7 +26,7 @@ public class SAPL {
 
         boolean[][] imMetrica = Image.imCrop(imBackground, 0, pontosCorte.posicoes.get(pontosCorte.tamanho - 1),
                 imBackground.length - 1, imBackground[0].length - 1);
-        Image.imWrite(imMetrica, "im/Moringa/Metricas/" + sample.getFilename() + ".png");
+        //Image.imWrite(imMetrica, "im/Moringa/Metricas/" + sample.getFilename() + ".png");
 
         double dist = 0;
         try {
@@ -200,8 +200,8 @@ public class SAPL {
         //Image.imWrite(plântula.getImagem(), "im/Moringa/results/binario_" + plântula + ".png");
         try {
             bw = maiorObjeto(bw);
-            Image.imWrite(seedling.getImage(), "im/Moringa/results/" + filename + "_" + seedling + ".png");
-            Image.imWrite(bw, "im/Moringa/results/" + filename + "_" + seedling + "_bin" + ".png");
+            //Image.imWrite(seedling.getImage(), "im/Moringa/results/" + filename + "_" + seedling + ".png");
+            //Image.imWrite(bw, "im/Moringa/results/" + filename + "_" + seedling + "_bin" + ".png");
             if (Image.max(Image.bwLabel(bw)) > 1) {
                 bw = juntarPontos(bw);
             }
@@ -406,7 +406,7 @@ public class SAPL {
         if (props.size() == 0)
             throw new Error("Não foi possível encontrar o ponto de corte");
 
-        Image.imWrite(bin, "im/Moringa/results/" + s + "_pcorteBin" + ".png");
+        //Image.imWrite(bin, "im/Moringa/results/" + s + "_pcorteBin" + ".png");
 
         Properties p = null;
 
@@ -432,7 +432,7 @@ public class SAPL {
         boolean[][] bwendpoints = Image.bwEndPoints(esqueleto);
 
         //Image.imWrite(esqueleto, "im/Moringa/results/esqueleto_" + plântula + ".png");
-        Image.imWrite(esqueleto, "im/Moringa/results/" + filename + "_" + seedling + "_esqueleto.png");
+        //Image.imWrite(esqueleto, "im/Moringa/results/" + filename + "_" + seedling + "_esqueleto.png");
 
         if (!esqueleto[p[0]][p[1]])
             p = pontodeCorteEsqueleto(esqueleto, p);

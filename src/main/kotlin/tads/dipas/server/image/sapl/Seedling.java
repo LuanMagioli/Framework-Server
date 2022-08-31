@@ -4,7 +4,9 @@ package tads.dipas.server.image.sapl;
 import tads.dipas.server.image.img.Image;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Set;
 
 @Entity
 @Table(name = "seedling")
@@ -32,12 +34,16 @@ public class Seedling {
     private Long processTime;
 
     public Seedling() {
+        this.aerial = new ArrayList<Point>();
+        this.root = new ArrayList<Point>();
     }
 
     public Seedling(int index, int[][][] image) {
         this.index = index;
         this.image = image;
         this.processTime = System.nanoTime();
+        this.aerial = new ArrayList<Point>();
+        this.root = new ArrayList<Point>();
     }
 
     @Override

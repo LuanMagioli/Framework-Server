@@ -18,7 +18,19 @@ class SeedlingService() {
 
     fun findSeedlings(): List<Seedling> = repository.findAll()
     fun get(id: Long): Optional<Seedling> = repository.findById(id)
-    fun post(seedling: Seedling) = repository.save(seedling)
+    fun post(seedling: Seedling): () -> Seedling = {
+        val pointService = PointService()
+
+        seedling.aerial.forEach{
+            pointService.post(it)
+        }
+
+        seedling.root.forEach{
+            pointService.post(it)
+        }
+
+        repository.save(seedling)
+    }
     fun put(seedling: Seedling) = repository.saveAndFlush(seedling)
     fun delete(id: Long) = repository.deleteById(id)
 
