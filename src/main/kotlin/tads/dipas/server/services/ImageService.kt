@@ -1,26 +1,24 @@
-package tads.dipas.server.service
+package tads.dipas.server.services
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import tads.dipas.server.model.Image
-import tads.dipas.server.repository.ImageRepository
+import tads.dipas.server.models.Image
+import tads.dipas.server.repositories.ImageRepository
 import java.util.Optional
 
-
 @Service
-class ImageService() {
+class ImageService {
     lateinit var repository: ImageRepository
+
 
     @Autowired
     fun setService(repository: ImageRepository) {
         this.repository = repository
     }
 
-    fun findImages(): List<Image> = repository.findAll()
-    fun findImagesByUser(id: Long): List<Image> = repository.findAllByUser_Id(id)
+    fun list(): List<Image> = repository.findAll()
     fun get(id: Long): Optional<Image> = repository.findById(id)
-    fun post(Image: Image) = repository.save(Image)
-    fun put(Image: Image) = repository.saveAndFlush(Image)
+    fun save(image: Image) = repository.save(image)
+    fun put(image: Image) = repository.saveAndFlush(image)
     fun delete(id: Long) = repository.deleteById(id)
-
 }
