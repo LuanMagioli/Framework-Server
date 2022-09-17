@@ -9,7 +9,7 @@ import java.nio.file.Paths
 @Configuration
 class ServerConfiguration: WebMvcConfigurer{
     override fun addResourceHandlers(registry: ResourceHandlerRegistry) {
-        exposeDirectory("images", registry);
+        exposeDirectory("src/images", registry);
     }
 
     fun exposeDirectory(dirName: String, registry: ResourceHandlerRegistry) {

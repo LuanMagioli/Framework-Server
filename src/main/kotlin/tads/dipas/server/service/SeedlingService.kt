@@ -2,7 +2,7 @@ package tads.dipas.server.service
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import tads.dipas.server.image.sapl.Seedling
+import tads.dipas.server.softwares.sapl.Seedling
 import tads.dipas.server.repository.SeedlingRepository
 import java.util.Optional
 

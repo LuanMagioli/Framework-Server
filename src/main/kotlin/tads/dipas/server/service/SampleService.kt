@@ -2,8 +2,7 @@ package tads.dipas.server.service
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import tads.dipas.server.image.sapl.Sample
-import tads.dipas.server.repository.PointRepository
+import tads.dipas.server.softwares.sapl.Sample
 import tads.dipas.server.repository.SampleRepository
 import java.util.Optional
 

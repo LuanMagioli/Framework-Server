@@ -1,11 +1,11 @@
-package tads.dipas.server.image.sapl;
+package tads.dipas.server.softwares.sapl;
 
 import org.jgrapht.*;
 import org.jgrapht.alg.shortestpath.DijkstraShortestPath;
 import org.jgrapht.graph.DefaultDirectedGraph;
 import org.jgrapht.graph.DefaultEdge;
-import tads.dipas.server.image.img.Image;
-import tads.dipas.server.image.img.Properties;
+import tads.dipas.server.softwares.img.Image;
+import tads.dipas.server.softwares.img.Properties;
 
 import java.util.ArrayList;
 import java.util.Arrays;

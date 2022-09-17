@@ -1,4 +1,4 @@
-package tads.dipas.server.image.img;
+package tads.dipas.server.softwares.img;
 
 public class Properties {
     public int area;

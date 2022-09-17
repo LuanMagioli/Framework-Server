@@ -1,4 +1,4 @@
-package tads.dipas.server.image.sapl;
+package tads.dipas.server.softwares.sapl;
 
 import javax.persistence.*;
 
@@ -11,9 +11,6 @@ public class Point {
     private Long id;
     private int x;
     private int y;
-    @ManyToOne
-    @JoinColumn(name = "seedling_id")
-    private Seedling seedling;
 
     public Point(int x, int y){
         this.x = x;

@@ -1,12 +1,13 @@
-package tads.dipas.server.image.sapl;
+package tads.dipas.server.softwares.sapl;
 
 
-import tads.dipas.server.image.img.Image;
+import org.springframework.hateoas.RepresentationModel;
+import tads.dipas.server.model.ImageResponse;
+import tads.dipas.server.softwares.img.Image;
 
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Set;
 
 @Entity
 @Table(name = "seedling")
@@ -22,15 +23,12 @@ public class Seedling {
     @JoinColumn(name = "middlepoint_id")
     private Point middlePoint;
 
-    @OneToMany(mappedBy = "seedling")
+    @OneToMany
     private List<Point> aerial;
-    @OneToMany(mappedBy = "seedling")
+    @OneToMany
     private List<Point> root;
     private boolean isRegular;
 
-    @ManyToOne
-    @JoinColumn(name = "sample_id")
-    private Sample sample;
     private Long processTime;
 
     public Seedling() {
@@ -73,24 +71,24 @@ public class Seedling {
         this.processTime = System.nanoTime() - this.processTime;
     }
 
-    public double getAerialLength() {
-        return aerial.size() / sample.getMetric();
+    public double getAerialLength(double metric) {
+        return aerial.size() / metric;
     }
 
-    public double getRootLength() {
-        return root.size() / sample.getMetric();
+    public double getRootLength(double metric) {
+        return root.size() / metric;
     }
 
-    public double getTotal() {
-        return aerial.size() / sample.getMetric() + root.size() / sample.getMetric();
+    public double getTotal(double metric) {
+        return aerial.size() / metric + root.size() / metric;
     }
 
-    public double getAerialRoot() {
-        return (root.size() / sample.getMetric()) / (aerial.size() / sample.getMetric());
+    public double getAerialRoot(double metric) {
+        return (root.size() / metric) / (aerial.size() / metric);
     }
 
-    public void measureRegular(float regularAerial, float regularRoot) {
-        this.isRegular = !(getAerialLength() < regularAerial || getRootLength() < regularRoot);
+    public void measureRegular(float regularAerial, float regularRoot, double metric) {
+        this.isRegular = !(getAerialLength(metric) < regularAerial || getRootLength(metric) < regularRoot);
     }
 
     public int getIndex() {
@@ -145,11 +143,36 @@ public class Seedling {
         this.isRegular = normal;
     }
 
-    public double getTotalLength() {
-        return this.getAerialLength() + this.getRootLength();
+    public double getTotalLength(double metric) {
+        return this.getAerialLength(metric) + this.getRootLength(metric);
     }
 
     public double getProcessTime() {
         return ((double) this.processTime) / 1_000_000_000;
+    }
+}
+
+public class SeedlingResponse extends RepresentationModel<ImageResponse> {
+    private Long id;
+    private int index;
+
+    private int[][][] image;
+
+    private Point middlePoint;
+
+    private List<Point> aerial;
+
+    private List<Point> root;
+    private boolean isRegular;
+
+    private Long processTime;
+
+    SeedlingResponse(Image image) {
+        id = image.id;
+        date = image.date.toString();
+        creator = image.user.username;
+
+    // add(linkTo<UserController> {methodOn(UserController::class.java).index()}.withRel("users"))
+    // add(linkTo<UserController> {methodOn(UserController::class.java).get(user.id)}.withRel("user"))
     }
 }

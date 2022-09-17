@@ -1,4 +1,4 @@
-package tads.dipas.server.image.img;
+package tads.dipas.server.softwares.img;
 
 import javax.imageio.ImageIO;
 import javax.swing.*;
@@ -12,6 +12,7 @@ import java.util.*;
 public class Image {
     public static int[][][] imRead(String path) {
         try {
+            System.out.println(path);
             BufferedImage im = ImageIO.read(new File(path));
             int[][][] imMatrix = new int[im.getHeight()][im.getWidth()][3];
             for (int i = 0; i < im.getHeight() - 1; i++) {

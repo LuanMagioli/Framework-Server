@@ -8,8 +8,8 @@ import tads.dipas.server.model.Image
 class ServerApplicationTests {
 
     @Test
-    fun contextLoads() {
-        val user = Image(1, "luanmagioli", "123", "Luan", "Magioli");
+    fun CreateImage() {
+        val image = Image(1, "", );
 
         assert(user != null);
         assert(user.name == "Luan");

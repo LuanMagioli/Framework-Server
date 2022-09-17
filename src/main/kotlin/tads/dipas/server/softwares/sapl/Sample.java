@@ -1,6 +1,6 @@
-package tads.dipas.server.image.sapl;
+package tads.dipas.server.softwares.sapl;
 
-import tads.dipas.server.image.img.Image;
+import tads.dipas.server.softwares.img.Image;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -12,13 +12,12 @@ public class Sample {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     @Column(name = "id", nullable = false)
-    private Long id;
+    public Long id;
     @Transient
     private int[][][] image;
-    @OneToMany(mappedBy = "sample")
+    @OneToMany
     private List<Seedling> seedlings;
     private String path;
-    private String file;
     private double metric;
 
     public Sample(String path) {
@@ -39,13 +38,6 @@ public class Sample {
         return seedlings.get(i);
     }
 
-    public String getFile() {
-        return file;
-    }
-
-    public void setFile(String file) {
-        this.file = file;
-    }
 
     public List<Seedling> getSeedlings() {
         return seedlings;
@@ -76,15 +68,15 @@ public class Sample {
     }
 
     public String getFilename() {
-        String[] split = this.file.split("\\.");
+        String[] split = this.path.split("\\.");
         return split[0];
     }
 
     public double tallestSeedling() {
         double maior = 0;
         for (Seedling p : this.seedlings) {
-            if (p.getTotalLength() > maior)
-                maior = p.getTotalLength();
+            if (p.getTotalLength(this.metric) > maior)
+                maior = p.getTotalLength(this.metric);
         }
         return maior;
     }

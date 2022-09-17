@@ -1,4 +1,4 @@
-package tads.dipas.server.image.sapl;
+package tads.dipas.server.softwares.sapl;
 
 import java.io.File;
 import java.io.FileNotFoundException;
@@ -55,7 +55,7 @@ public class Repetition {
 
     public void setAmostra(Sample a){
         for(Seedling p : a.getSeedlings())
-            p.measureRegular(this.normalAérea, this.normalRadicular);
+            p.measureRegular(this.normalAérea, this.normalRadicular, 55555);
         samples.add(a);
     }
 
@@ -211,10 +211,10 @@ public class Repetition {
 
         for(Sample a : this.samples){
             for(Seedling p : a.getSeedlings()){
-                radicular.add(p.getRootLength());
-                aérea.add(p.getAerialLength());
-                total.add(p.getTotal());
-                radiculaAérea.add(p.getAerialRoot());
+                radicular.add(p.getRootLength(55555));
+                aérea.add(p.getAerialLength(55555));
+                total.add(p.getTotal(55555));
+                radiculaAérea.add(p.getAerialRoot(55555));
             }
         }
 
@@ -275,10 +275,10 @@ public class Repetition {
                 for(Seedling p : a.getSeedlings()){
                     sb.append(a.getFilename() + ";");
                     sb.append(p.getIndex() + ";");
-                    sb.append(nf.format(p.getAerialLength()) + ";");
-                    sb.append(nf.format(p.getRootLength()) + ";");
-                    sb.append(nf.format(p.getTotalLength()) + ";");
-                    sb.append(nf.format(((p.getTotalLength()*100) / maior)) + ";");
+                    sb.append(nf.format(p.getAerialLength(55555)) + ";");
+                    sb.append(nf.format(p.getRootLength(55555)) + ";");
+                    sb.append(nf.format(p.getTotalLength(55555)) + ";");
+                    sb.append(nf.format(((p.getTotalLength(55555)*100) / maior)) + ";");
                     sb.append(nf.format(p.getProcessTime()) + ";");
                     if(p.isIsRegular())
                         sb.append("Normal");
