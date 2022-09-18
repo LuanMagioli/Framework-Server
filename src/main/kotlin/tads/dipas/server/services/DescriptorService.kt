@@ -2,7 +2,7 @@ package tads.dipas.server.services
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import tads.dipas.server.models.entity.Descriptor
+import tads.dipas.server.models.Descriptor
 import tads.dipas.server.repositories.DescriptorRepository
 import java.util.Optional
 

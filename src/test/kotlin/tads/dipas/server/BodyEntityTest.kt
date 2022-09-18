@@ -5,10 +5,8 @@ import org.junit.runner.RunWith
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.boot.test.context.SpringBootTest
 import org.springframework.test.context.junit4.SpringRunner
-import tads.dipas.server.models.entity.Descriptor
-import tads.dipas.server.models.entity.Entity
-import tads.dipas.server.repositories.DescriptorRepository
-import tads.dipas.server.repositories.EntityRepository
+import tads.dipas.server.models.Descriptor
+import tads.dipas.server.models.Entity
 import tads.dipas.server.services.EntityService
 
 

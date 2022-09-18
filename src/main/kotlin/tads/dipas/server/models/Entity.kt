@@ -1,6 +1,7 @@
-package tads.dipas.server.models.entity
+package tads.dipas.server.models
 
 import lombok.Data
+import tads.dipas.server.models.Descriptor
 import tads.dipas.server.models.Image
 import javax.persistence.Column
 import javax.persistence.Entity

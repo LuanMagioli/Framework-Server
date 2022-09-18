@@ -1,4 +1,4 @@
-package tads.dipas.server.models.entity
+package tads.dipas.server.models
 
 import lombok.Data
 import javax.persistence.Column
@@ -19,3 +19,13 @@ class Descriptor (
     val value:Double = 0.0,
     val isCategorical:Boolean = false //Categorical or numeric
 )
+
+class DescriptorRequest(
+    private val name:String = "",
+    private val description: String = "",
+    private val value: Double = 0.0
+){
+    fun build(): Descriptor{
+        return Descriptor(name = name, description = description, value = value)
+    }
+}

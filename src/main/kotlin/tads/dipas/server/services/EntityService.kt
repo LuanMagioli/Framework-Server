@@ -2,9 +2,7 @@ package tads.dipas.server.services
 
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
-import tads.dipas.server.models.entity.Descriptor
-import tads.dipas.server.models.entity.Entity
-import tads.dipas.server.repositories.DescriptorRepository
+import tads.dipas.server.models.Entity
 import tads.dipas.server.repositories.EntityRepository
 import java.util.Optional
 
@@ -31,13 +29,6 @@ class EntityService {
             .forEach{
                 if(it.id == null)
                     descriptorService.save(it)
-                print(it.id)
-            }
-
-        if(entity.images != null) entity.images!!
-            .forEach{
-                if(it.id == null)
-                    imageService.save(it)
                 print(it.id)
             }
 

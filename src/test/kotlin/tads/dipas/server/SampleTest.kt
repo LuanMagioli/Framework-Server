@@ -2,8 +2,8 @@ package tads.dipas.server
 
 import org.junit.jupiter.api.Test
 import org.springframework.boot.test.context.SpringBootTest
-import tads.dipas.server.models.entity.Descriptor
-import tads.dipas.server.models.entity.Entity
+import tads.dipas.server.models.Descriptor
+import tads.dipas.server.models.Entity
 import tads.dipas.server.models.Sample
 
 @SpringBootTest
